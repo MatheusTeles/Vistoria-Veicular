@@ -32,6 +32,10 @@ class Viagem(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     de = db.Column(db.String(128), index=True)
     para = db.Column(db.String(128), index=True)
+    data = db.Column(db.String(32), index=True)
     passageiros = db.Column(db.Integer)
     veiculo_id = db.Column(db.Integer, db.ForeignKey('veiculo.id'))
     veiculo = db.relationship("Veiculo", backref="viagens")
+
+    def __repr__(self):
+        return f'<Viagem {self.id} - {self.data}>'
